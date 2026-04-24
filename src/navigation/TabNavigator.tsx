@@ -44,11 +44,7 @@ const TopTabs = () => {
 
   return (
     <View style={styles.topTabsContainer}>
-      <ScrollView 
-        horizontal 
-        showsHorizontalScrollIndicator={false} 
-        contentContainerStyle={styles.topTabsContent}
-      >
+      <View style={styles.topTabsContent}>
         {tabs.map((tab) => (
           <Pressable 
             key={tab.id} 
@@ -70,7 +66,7 @@ const TopTabs = () => {
             </Typography>
           </Pressable>
         ))}
-      </ScrollView>
+      </View>
     </View>
   );
 };
@@ -130,7 +126,6 @@ export default function TabNavigator() {
           tabBarIcon: ({ color, focused }) => {
             const size = 24;
             if (route.name === 'Home') return <Home size={size} color={color} strokeWidth={focused ? 2.5 : 2} />;
-            if (route.name === 'Beauty') return <Sparkles size={size} color={color} strokeWidth={focused ? 2.5 : 2} />;
             if (route.name === 'Help & Support') return <Headphones size={size} color={color} strokeWidth={focused ? 2.5 : 2} />;
             if (route.name === 'Account') return <User size={size} color={color} strokeWidth={focused ? 2.5 : 2} />;
             return null;
@@ -138,11 +133,7 @@ export default function TabNavigator() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen 
-          name="Beauty" 
-          component={CategoryScreen} 
-          initialParams={{ categoryId: 'c2', categoryName: 'Beauty', isTab: true }} 
-        />
+
         <Tab.Screen name="Help & Support" component={HelpSupportScreen} />
         <Tab.Screen name="Account" component={ProfileScreen} />
       </Tab.Navigator>
@@ -168,14 +159,16 @@ const styles = StyleSheet.create({
     borderBottomColor: '#F1F5F9',
   },
   topTabsContent: {
-    paddingHorizontal: Spacing.lg,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
     paddingVertical: Spacing.md,
-    gap: 20,
   },
   topTabItem: {
+    flex: 1,
     alignItems: 'center',
     gap: 6,
-    width: 65,
   },
   topTabIconWrapper: {
     width: 55,

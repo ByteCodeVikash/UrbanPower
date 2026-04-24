@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, SafeAreaView, Pressable, Image } from 'react-native';
+import { View, StyleSheet, FlatList, SafeAreaView, Pressable, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/Types';
@@ -13,60 +13,65 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function ShopCategoryScreen() {
   const navigation = useNavigation<NavigationProp>();
 
+  const renderItem = ({ item }: any) => (
+    <Pressable 
+      style={styles.categoryCard}
+      onPress={() => navigation.navigate('ShopSubCategory', { 
+        categoryId: item.id, 
+        categoryName: item.name 
+      })}
+    >
+      <View style={styles.iconContainer}>
+        <Image source={{ uri: item.icon }} style={styles.icon} />
+      </View>
+      <Typography variant="body2" weight="700" style={styles.categoryTitle} numberOfLines={2}>
+        {item.name}
+      </Typography>
+    </Pressable>
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header title="Shopping" />
       
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
-        <View style={styles.categoryGrid}>
-          {SHOP_CATEGORIES.map((item) => (
-            <Pressable 
-              key={item.id} 
-              style={styles.categoryCard}
-              onPress={() => navigation.navigate('ShopSubCategory', { 
-                categoryId: item.id, 
-                categoryName: item.name 
-              })}
-            >
-              <View style={styles.iconContainer}>
-                <Image source={{ uri: item.icon }} style={styles.icon} />
-              </View>
-              <Typography variant="body2" weight="700" style={styles.categoryTitle} numberOfLines={2}>
-                {item.name}
-              </Typography>
-            </Pressable>
-          ))}
-        </View>
-
-        <View style={styles.infoBox}>
-           <Typography variant="body2" color={Colors.light.textSecondary} style={{ textAlign: 'center' }}>
+      <FlatList
+        data={SHOP_CATEGORIES}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        ListFooterComponent={
+          <View style={styles.infoBox}>
+            <Typography variant="body2" color={Colors.light.textSecondary} style={{ textAlign: 'center' }}>
               Explore latest trends in fashion, electronics, and home decor. Best prices guaranteed.
-           </Typography>
-        </View>
-      </ScrollView>
+            </Typography>
+          </View>
+        }
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: Colors.light.surface },
-  content: { padding: Spacing.md, paddingBottom: 100 },
-  categoryGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  content: { paddingVertical: Spacing.md, paddingBottom: 100 },
+  columnWrapper: {
     justifyContent: 'space-between',
-    gap: Spacing.md,
+    paddingHorizontal: 16,
+    marginBottom: 16,
   },
   categoryCard: {
-    width: '47%',
+    width: '48%',
     backgroundColor: Colors.light.white,
     padding: Spacing.lg,
     borderRadius: BorderRadius.xl,
     alignItems: 'center',
+    justifyContent: 'center',
     ...Shadows.light.sm,
     borderWidth: 1,
     borderColor: Colors.light.borderLight,
-    marginBottom: Spacing.sm,
   },
   iconContainer: {
     width: 60,
@@ -78,9 +83,10 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.sm,
   },
   icon: { width: 34, height: 34 },
-  categoryTitle: { textAlign: 'center', color: Colors.light.text },
+  categoryTitle: { textAlign: 'center', color: Colors.light.text, fontSize: 13 },
   infoBox: {
     marginTop: Spacing.xl,
+    marginHorizontal: 16,
     padding: Spacing.xl,
     backgroundColor: '#FDF2F8',
     borderRadius: BorderRadius.xl,

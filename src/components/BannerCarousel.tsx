@@ -56,6 +56,8 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = React.memo(({ data,
             <Image 
               source={typeof item.image === 'string' ? { uri: item.image } : item.image} 
               style={styles.image} 
+              resizeMode="cover"
+              defaultSource={require('../../assets/app_logo.jpeg')}
             />
           ) : (
             <View style={[styles.image, { backgroundColor: Colors.light.surface }]} />

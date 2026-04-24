@@ -48,7 +48,12 @@ export default function GroceryProductListScreen() {
           <View style={styles.productGrid}>
             {filteredProducts.map((product) => (
               <View key={product.id} style={styles.productCard}>
-                <Image source={{ uri: product.image }} style={styles.productImage} />
+                <Image 
+                  source={{ uri: product.image }} 
+                  style={styles.productImage} 
+                  resizeMode="cover"
+                  defaultSource={require('../../../assets/app_logo.jpeg')}
+                />
                 <View style={styles.productInfo}>
                   <Typography variant="body2" weight="700" numberOfLines={2} style={styles.productTitle}>
                     {product.title}

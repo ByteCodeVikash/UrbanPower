@@ -36,7 +36,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onPress={onPress}
     >
       <View style={styles.imageContainer}>
-        <Image source={{ uri: product.image }} style={styles.image} resizeMode="cover" />
+        <Image 
+          source={{ uri: product.image || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop' }} 
+          style={styles.image} 
+          resizeMode="cover" 
+          defaultSource={require('../../assets/app_logo.jpeg')}
+        />
         <View style={styles.badge}>
           <Typography variant="tiny" weight="700" color={Colors.light.primary}>20% OFF</Typography>
         </View>

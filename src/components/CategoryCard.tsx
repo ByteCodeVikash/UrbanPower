@@ -95,6 +95,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
             source={{ uri: category.icon }} 
             style={styles.iconImage} 
             resizeMode="contain"
+            defaultSource={require('../../assets/app_logo.jpeg')}
           />
         ) : (
           <IconComponent color={Colors.light.primary} size={28} />

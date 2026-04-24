@@ -2,7 +2,6 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type TabParamList = {
   Home: undefined;
-  Beauty: { categoryId: string; categoryName: string; isTab: boolean };
   'Help & Support': undefined;
   Account: undefined;
 };

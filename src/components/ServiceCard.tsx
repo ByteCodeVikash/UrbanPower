@@ -45,11 +45,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       ]}
       onPress={onPress}
     >
-      {service?.image ? (
-        <Image source={{ uri: service.image }} style={styles.image} />
-      ) : (
-        <View style={[styles.image, styles.imagePlaceholder]} />
-      )}
+      <Image 
+        source={{ uri: service.image || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop' }} 
+        style={styles.image} 
+        resizeMode="cover"
+        defaultSource={require('../../assets/app_logo.jpeg')}
+      />
 
       <View style={styles.content}>
         <View>

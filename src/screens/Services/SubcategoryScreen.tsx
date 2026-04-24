@@ -67,7 +67,12 @@ export default function SubcategoryScreen() {
               })
             }
           >
-            <Image source={{ uri: item.image }} style={styles.cardImage} />
+            <Image 
+              source={{ uri: item.image }} 
+              style={styles.cardImage} 
+              resizeMode="cover"
+              defaultSource={require('../../../assets/app_logo.jpeg')}
+            />
             <LinearGradient
               colors={['transparent', 'rgba(0,0,0,0.65)']}
               style={styles.cardGradient}

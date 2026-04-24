@@ -140,7 +140,8 @@ export const CATEGORIES: Category[] = [
       { id: 'c3s1', title: 'Electrician', image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop', rating: 4.8, reviews: 25.4, price: 199, duration: '1 hr' },
       { id: 'c3s2', title: 'Carpenter', image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop', rating: 4.7, reviews: 18.2, price: 249, duration: '1 hr' },
       { id: 'c3s3', title: 'AC Repair & Service', image: 'https://images.unsplash.com/photo-1518081461904-9d8f136351c2?q=80&w=600&auto=format&fit=crop', rating: 4.9, reviews: 44.2, price: 499, duration: '45 mins' },
-      { id: 'c3s4', title: 'RO (Water Purifier Service)', image: 'https://images.unsplash.com/photo-1585837554808-a19e137459d1?q=80&w=600&auto=format&fit=crop', rating: 4.6, reviews: 12.1, price: 299, duration: '1 hr' },
+      { id: 'c3s4', title: 'RO / Water Purifier Service', image: 'https://images.unsplash.com/photo-1634027732002-36c14101e483?q=80&w=600&auto=format&fit=crop', rating: 4.6, reviews: 12.1, price: 299, duration: '1 hr' },
+      { id: 'c3s5', title: 'Plumber', image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop', rating: 4.8, reviews: 21.3, price: 249, duration: '1 hr' },
     ],
   },
 

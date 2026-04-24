@@ -169,13 +169,13 @@ export default function HomeScreen() {
                 style={styles.moduleItem}
                 hideText={false}
                 onPress={() => {
-                  // ── Module routes (stack screens) ──
+                  // ── Module routes — SAME as top taskbar ──
                   if (item.id === 'shop') {
-                    navigation.navigate('ShoppingScreen');
+                    navigation.navigate('ShopCategory');
                   } else if (item.id === 'grocery') {
-                    navigation.navigate('GroceryScreen');
+                    navigation.navigate('GroceryCategory');
                   } else if (item.id === 'kabadi') {
-                    navigation.navigate('KabadiScreen');
+                    navigation.navigate('KabadiCategory');
 
                   // ── Gender-based categories ──
                   } else if (item.id === 'c2') {
@@ -208,7 +208,7 @@ export default function HomeScreen() {
         <View style={styles.spotlightRow}>
           <Pressable
             style={[styles.spotlightCard, { backgroundColor: '#1E1B4B' }]}
-            onPress={() => navigation.navigate('ShoppingScreen')}
+            onPress={() => navigation.navigate('ShopCategory')}
           >
             <ShoppingBag color={Colors.light.white} size={24} />
             <Typography
@@ -225,7 +225,7 @@ export default function HomeScreen() {
           </Pressable>
           <Pressable
             style={[styles.spotlightCard, { backgroundColor: '#064E3B' }]}
-            onPress={() => navigation.navigate('KabadiScreen')}
+            onPress={() => navigation.navigate('KabadiCategory')}
           >
             <Truck color={Colors.light.white} size={24} />
             <Typography
@@ -249,7 +249,7 @@ export default function HomeScreen() {
           <View style={styles.sectionHeaderWrapper}>
             <SectionHeader
               title="For You"
-              onSeeAll={() => navigation.navigate('ShoppingScreen')}
+              onSeeAll={() => navigation.navigate('ShopCategory')}
             />
           </View>
           <FlatList
@@ -344,14 +344,13 @@ const styles = StyleSheet.create({
   moduleGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: Spacing.md,
-    justifyContent: 'flex-start',
+    paddingHorizontal: 16,
+    justifyContent: 'space-between',
   },
   moduleItem: {
-    width: '25%',
+    width: '24%', // Exactly 4 items per row with spacing
     alignItems: 'center',
     marginBottom: Spacing.xl,
-    paddingHorizontal: Spacing.xs,
   },
 
   /* ─── Spotlight cards ─── */
